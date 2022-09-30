@@ -1,6 +1,8 @@
 import logging
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import os
+import requests
+
 PORT = int(os.environ.get('PORT', '5000'))
 
 # Enable logging
@@ -14,16 +16,34 @@ TOKEN = '5523452009:AAF3c34lk8gC2nVQNMhHgdhzu5VKdIgBfkY'
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     """Send a message when the command /start is issued."""
-    print("start .. checked")
-    update.message.reply_text('Hi!')
+    update.message.reply_text('Hi! i am your news bot you can request news by saying /news')
 
 def help(update, context):
     """Send a message when the command /help is issued."""
-    update.message.reply_text('Help!')
+    update.message.reply_text('send me /news to get current tech news')
+
+def get_news():
+    
+
+    url = ('https://newsapi.org/v2/everything?'
+       'q=Apple&'
+       'from=2022-09-30&'
+       'sortBy=popularity&'
+       'apiKey=41098a29358d4f1184070fde7d255955')
+
+    response = requests.get(url)
+
+    return r.json
 
 def echo(update, context):
     """Echo the user message."""
-    update.message.reply_text(update.message.text)
+    update.message.reply_text(update.message.text+"?")
+
+def news(update, context):
+    """Echo the user message."""
+    update.message.reply_text("news")
+    update.message.reply_text(get_news())
+
 
 def error(update, context):
     """Log Errors caused by Updates."""
@@ -43,6 +63,7 @@ def main():
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
+    dp.add_handler(CommandHandler("news", news))
 
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, echo))
