@@ -33,7 +33,7 @@ def get_news():
 
     response = requests.get(url)
 
-    return response.json
+    return response.text
 
 def echo(update, context):
     """Echo the user message."""
