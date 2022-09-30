@@ -48,7 +48,7 @@ def news(update, context):
                                   "\n Author: "+news["author"]+
                                    "\n Title: "+news["title"]+
                                     "\n Description: "+news["description"]+
-                                    "\n Url: "+news["Url"]
+                                    "\n Url: "+news["url"]
                                     )
         
         update.message.reply_text()
