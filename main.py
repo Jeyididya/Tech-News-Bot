@@ -45,7 +45,7 @@ def news(update, context):
     all_news=get_news()["articles"]
     for news in all_news:
         update.message.reply_text("Name: "+news["source"]["name"]+
-                                  "\n Author: "+news["author"] or "--" +
+                                  "\n Author: "+news["author"]+
                                    "\n Title: "+news["title"]+
                                     "\n Description: "+news["description"]+
                                     "\n Url: "+news["url"]
