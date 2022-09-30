@@ -42,7 +42,9 @@ def echo(update, context):
 def news(update, context):
     """Echo the user message."""
     update.message.reply_text("news")
-    update.message.reply_text(get_news())
+    all_news=get_news()["articles"]
+    for news in all_news:
+        update.message.reply_text("name:"+news["source"]["name"])
 
 
 def error(update, context):
