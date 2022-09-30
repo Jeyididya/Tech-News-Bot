@@ -51,7 +51,6 @@ def news(update, context):
                                     "\n Url: "+news["url"]
                                     )
         
-        update.message.reply_text()
 
 
 
