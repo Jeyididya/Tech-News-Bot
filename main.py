@@ -56,7 +56,7 @@ def endpoints(update,context):
 
 
 def start(update,context):
-    if connecter.get_user(update.message.chat.username)=="":
+    if connecter.get_user(update.message.chat.username)==None:
         update.message.reply_text(text="welcome {},since this is your first time..\n i will need you to insert some info about you\
             choose your interests and click Done when you finish".format(update.message.chat.username),reply_markup=category_keyboard())
         users[update.message.chat.username]={
