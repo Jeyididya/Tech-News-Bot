@@ -83,7 +83,7 @@ def muk(update,context):
     elif len(inline_keyboard)==3:
         users[query.message.chat.username]["sortby"]=query.data
         context.bot.answer_callback_query(callback_query_id=query.id,text="sorting by {}".format(query.data),show_alert=True)
-        query.edit_message_text(text="What keywords do you need to be included. add them by /add_keyword keyword1,keyword2\n type in /done when you finish")
+        query.edit_message_text(text="What keywords do you need to be included. add them by /add_keyword keyword1 \n /add_keyword keyword2\n type in /done when you finish")
     elif len(inline_keyboard)==2:
         users[query.message.chat.username]["endpoint"]=query.data
         context.bot.answer_callback_query(callback_query_id=query.id,text="default endpoint {}".format(query.data),show_alert=True)
